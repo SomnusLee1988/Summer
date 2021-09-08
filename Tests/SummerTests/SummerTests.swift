@@ -7,5 +7,13 @@
             // Use XCTAssert and related functions to verify your tests produce the correct
             // results.
             XCTAssertEqual(Summer().text, "Hello, World!")
+            Container.register(protocolType: Animal.self, name: "cat") {
+                CatClass()
+            }
+            Container.register(protocolType: Animal.self, name: "dog") {
+                DogClass()
+            }
+            let human = HumanClass()
+            human.play()
         }
     }
