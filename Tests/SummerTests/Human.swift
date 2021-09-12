@@ -24,4 +24,36 @@ class HumanClass {
     func play() {
         cat?.makeNoise()
     }
+    
+}
+
+protocol ParentProtocol {
+    
+}
+
+protocol ChildProtocol {
+    
+    func printChild()
+    
+}
+
+class Parent: ParentProtocol {
+    
+    @Autowired
+    var child: ChildProtocol?
+    
+    public func test() {
+        child?.printChild()
+    }
+    
+}
+
+class Child: ChildProtocol {
+
+    @Autowired
+    var parent: ParentProtocol?
+    
+    func printChild() {
+        print("child")
+    }
 }

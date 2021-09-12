@@ -26,27 +26,26 @@ public struct Autowired<Value> {
             let value = Container.resolve(protocolType: Value.self, name: name)
             return value ?? defaultValue
         }
-        
+
         set {
             defaultValue = newValue
         }
     }
     
-    public static subscript<EnclosingSelf>(
-        _enclosingInstance observed: EnclosingSelf,
-        wrapped wrappedKeyPath: ReferenceWritableKeyPath<EnclosingSelf, Value>,
-        storage storageKeyPath: ReferenceWritableKeyPath<EnclosingSelf, Self>
-    ) -> Value {
-        get {
-            let name = observed[keyPath: storageKeyPath].name
-            let value = Container.resolve(protocolType: Value.self, name: name)
-
-            return value ?? observed[keyPath: storageKeyPath].defaultValue
-        }
-        set {
-            observed[keyPath: storageKeyPath].defaultValue = newValue
-        }
-    }
+//    public static subscript<EnclosingSelf>(
+//        _enclosingInstance observed: EnclosingSelf,
+//        wrapped wrappedKeyPath: ReferenceWritableKeyPath<EnclosingSelf, Value>,
+//        storage storageKeyPath: ReferenceWritableKeyPath<EnclosingSelf, Self>
+//    ) -> Value {
+//        get {
+//            let name = observed[keyPath: storageKeyPath].name
+//            let value = Container.resolve(protocolType: Value.self, name: name)
+//
+//            return value ?? observed[keyPath: storageKeyPath].defaultValue
+//        }
+//        set {
+//            observed[keyPath: storageKeyPath].defaultValue = newValue
+//        }
+//    }
     
 }
-
