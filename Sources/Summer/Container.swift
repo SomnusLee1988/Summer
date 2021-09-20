@@ -14,13 +14,13 @@ extension Container: ServiceRegister {
     
     private static var services = [ServiceKey: ServiceRouter]()
     
-    public static func register<Protocol>(protocolType: Protocol.Type, name: String? = nil, constructor: @escaping () -> Protocol) {
+    public static func register<Protocol>(protocolType: Protocol.Type, name: String? = nil, scope: Scope = .singleton, constructor: @escaping () -> Protocol) {
         guard !isOptional(protocolType) else {
             fatalError("can not register an optional type[\(protocolType)]!")
         }
         
         let serviceKey = ServiceKey(serviceType: protocolType, name: name)
-        let serviceRouter = ServiceRouter(serviceType: protocolType, constructor: constructor)
+        let serviceRouter = ServiceRouter(serviceType: protocolType, constructor: constructor, singleton: scope == .singleton)
         
         guard services[serviceKey] == nil else {
             fatalError("service[\(serviceKey)] already registered, cannot register duplicated service!")

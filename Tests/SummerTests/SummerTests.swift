@@ -2,6 +2,15 @@
     @testable import Summer
 
     final class SummerTests: XCTestCase {
+        
+        override class func setUp() {
+            
+        }
+        
+        override class func tearDown() {
+            
+        }
+        
         func testExample() {
             // This is an example of a functional test case.
             // Use XCTAssert and related functions to verify your tests produce the correct

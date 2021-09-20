@@ -7,7 +7,14 @@
 import Foundation
 
 public protocol Register {
-    static func register<Protocol>(protocolType: Protocol.Type, name: String?, constructor: @escaping () -> Protocol)
+    
+    /// Register a service
+    /// - Parameters:
+    ///   - protocolType: service protocol metatype
+    ///   - name: service name
+    ///   - scope: resolved object scope
+    ///   - constructor: factory function
+    static func register<Protocol>(protocolType: Protocol.Type, name: String?, scope: Scope, constructor: @escaping () -> Protocol)
 }
 
 public protocol ServiceRegister: Register {
